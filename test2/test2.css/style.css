@@ -1,0 +1,35 @@
+@charset "utf-8";
+body{
+    background-color: aqua;
+}
+.bigimg{
+    width:1000px;
+    margin: 0 auto;
+}
+.content{
+    width:600px;
+    margin: 0 auto;
+}
+
+.index-wrapper{
+    background-color: white;
+    width:1000px;
+    margin:0 auto;
+    
+}
+.detail-img{
+    width:50%;
+    display: inline-block;
+}
+.detail-content{
+    display: inline-block;
+    width: 49%;
+}
+.detail-content ul{
+    border-top: solid;
+    border-bottom:solid;
+}
+footer{
+    text-align:center;
+    width:600px;
+}

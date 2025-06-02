@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>代返カレンダー with 仲間登録</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 10px;
+      text-align: center;
+      vertical-align: top;
+    }
+    input[type="text"], select {
+      width: 90%;
+      margin-bottom: 5px;
+    }
+    .list-item {
+      background: #e0f7fa;
+      margin: 5px 0;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎓 代返カレンダー＋仲間管理</h1>
+
+  <!-- 仲間の登録 -->
+  <h2>👥 代返仲間を登録</h2>
+  <input type="text" id="friendName" placeholder="名前を入力">
+  <button onclick="addFriend()">登録</button>
+  <ul id="friendList"></ul>
+
+  <!-- カレンダー -->
+  <h2>🗓️ 授業カレンダー</h2>
+  <table id="calendar">
+    <thead>
+      <tr>
+        <th></th>
+        <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th>
+      </tr>
+    </thead>
+    <tbody>
+      <script>
+        for (let i = 1; i <= 5; i++) {
+          document.write('<tr>');
+          document.write(`<th>${i}限</th>`);
+          for (let j = 0; j < 5; j++) {
+            const cellId = `cell-${i}-${j}`;
+            document.write(`
+              <td id="${cellId}">
+                <input type="text" placeholder="授業名" onchange="saveClass(${i}, ${j}, this.value)">
+                <br/>
+                <select id="friend-${i}-${j}">
+                  <option value="">--代返する人--</option>
+                </select>
+                <button onclick="request代返(${i}, ${j})">代返登録</button>
+              </td>
+            `);
+          }
+          document.write('</tr>');
+        }
+      </script>
+    </tbody>
+  </table>
+
+  <!-- 代返リスト -->
+  <h2>📝 代返シフト</h2>
+  <ul id="shiftList"></ul>
+
+  <script>
+    // 起動時に全データ復元
+    window.onload = function() {
+      // 授業データ
+      const classData = JSON.parse(localStorage.getItem("calendarData") || "{}");
+      for (const key in classData) {
+        const cell = document.getElementById(key);
+        if (cell) {
+          cell.querySelector("input").value = classData[key];
+        }
+      }
+
+      // 仲間リスト
+      const friends = JSON.parse(localStorage.getItem("friendList") || "[]");
+      friends.forEach(name => addFriendOption(name));
+      updateFriendListDisplay(friends);
+
+      // 代返シフト
+      const daibenList = JSON.parse(localStorage.getItem("daibenList") || "[]");
+      daibenList.forEach(text => addListItem(text));
+    };
+
+    // 授業を保存
+    function saveClass(period, day, value) {
+      const key = `cell-${period}-${day}`;
+      const current = JSON.parse(localStorage.getItem("calendarData") || "{}");
+      current[key] = value;
+      localStorage.setItem("calendarData", JSON.stringify(current));
+    }
+
+    // 代返仲間追加
+    function addFriend() {
+      const name = document.getElementById("friendName").value.trim();
+      if (!name) return;
+      let friends = JSON.parse(localStorage.getItem("friendList") || "[]");
+      if (friends.includes(name)) return;
+      friends.push(name);
+      localStorage.setItem("friendList", JSON.stringify(friends));
+      addFriendOption(name);
+      updateFriendListDisplay(friends);
+      document.getElementById("friendName").value = "";
+    }
+
+    function addFriendOption(name) {
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          const select = document.getElementById(`friend-${i}-${j}`);
+          const option = document.createElement("option");
+          option.value = name;
+          option.text = name;
+          select.appendChild(option);
+        }
+      }
+    }
+
+    function updateFriendListDisplay(friends) {
+  const ul = document.getElementById("friendList");
+  ul.innerHTML = "";
+  friends.forEach(name => {
+    const li = document.createElement("li");
+
+    const span = document.createElement("span");
+    span.textContent = name;
+
+    const btn = document.createElement("button");
+    btn.textContent = "削除";
+    btn.style.marginLeft = "10px";
+    btn.onclick = () => {
+      deleteFriend(name);
+    };
+
+    li.appendChild(span);
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+}
+
+
+    // 代返登録
+    function request代返(period, day) {
+      const cell = document.getElementById(`cell-${period}-${day}`);
+      const subject = cell.querySelector("input").value.trim();
+      const select = document.getElementById(`friend-${period}-${day}`);
+      const friend = select.value;
+
+      if (!subject || !friend) {
+        alert("授業名と代返者を選んでください！");
+        return;
+      }
+
+      const days = ["月", "火", "水", "木", "金"];
+      const message = `${days[day]}曜 ${period}限『${subject}』を ${friend} が代返予定`;
+      addListItem(message);
+
+      const list = JSON.parse(localStorage.getItem("daibenList") || "[]");
+      list.push(message);
+      localStorage.setItem("daibenList", JSON.stringify(list));
+    }
+
+    function addListItem(text) {
+      const li = document.createElement("li");
+      li.className = "list-item";
+      li.innerText = text;
+      document.getElementById("shiftList").appendChild(li);
+    }
+  </script>
+
+</body>
+</html>

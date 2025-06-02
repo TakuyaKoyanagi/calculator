@@ -1,0 +1,65 @@
+@charset "utf-8";
+header{
+    width:960px;
+    padding:4%;
+    margin: 0 auto; 
+}
+h1{
+    float:left;
+    height:100%;
+    
+    
+}
+.header-list{
+    float:right;
+    height:100%;   
+}
+header li{
+    display:inline-block;
+    margin-left: 20px;
+}
+.mainimg{
+    width:100%;
+    height:420px;
+}
+.section-container{
+    margin:0 auto;
+    width:960px;
+}
+.adress dt{
+    float:left;
+    
+}
+.works-img{
+    width:30%;
+    margin:0 auto;
+}
+.news-content{
+    
+    border-bottom: solid;
+}
+.newses dt{
+    float:left;
+    margin-right:20px;
+    
+}
+form{
+    text-align: center;
+}
+input{
+    width:100%;
+}
+label{
+    display:block;
+}
+button{
+    background-color: black;
+    color: white;
+    display: block;
+    margin:0 auto;
+}
+footer{
+    background-color: black;
+    color: white;
+    
+}

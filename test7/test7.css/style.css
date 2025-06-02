@@ -1,0 +1,187 @@
+@charset "utf-8";
+header{
+    position:fixed;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.header-class {
+    color: white;
+    text-decoration:none;
+    font-family: Helvetica Neue;
+    text-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+    transition: all  0.3s ease;
+    filter: drop-shadow(1px 1px 2px #121212);
+   
+    width: 10%;
+}
+.header-class:hover{
+    color: red;
+}
+body{
+    font-size: 0.9rem;
+}
+.img-wrapper{
+    background-attachment: fixed;
+
+    text-align: center;
+    width:100%;
+    background-size: cover;
+    min-height:50vh;
+    background-repeat: no-repeat;
+}
+.img-wrapper h2{
+    padding-top:25vh;
+    padding-bottom:25vh;
+    font-size: 4.5rem;
+    filter: drop-shadow(1px 1px 10px #c0c0c0);
+    
+    color:white;
+}
+.coffee-wrapper{
+    background-image: url(/Users/takuya/Desktop/模写コーディング/test7/img/mainvisual.jpg);
+    
+}
+.menu-wrapper{
+    background-image: url(/Users/takuya/Desktop/模写コーディング/test7/img/menu.jpg);
+}
+.menu-detail-wrapper{
+    display:flex;
+    flex-wrap: wrap;
+}
+.coffee{
+  
+    
+    width:50%;
+    border-right:1px solid black ;
+    
+}
+.menu h3 span{
+    border-bottom:solid 5px red; 
+}
+.menu dl{
+    display: flex;
+    flex-wrap: wrap;}
+.menu dt{
+    border-bottom: 1px dotted black;
+    width:70%;
+    text-align: left;
+
+}
+.menu dd{
+    width:10%;
+    text-align: right;
+
+    white-space: nowrap;
+}
+
+.menu-right{
+    width:49.9%;
+    
+    
+}
+.food{
+    width:100%;
+    
+    
+}
+.other{
+    width:100%;
+    
+    
+    
+}
+.about-wrapper{
+    background-image: url(/Users/takuya/Desktop/模写コーディング/test7/img/about.jpg);
+}
+.content-wrapper{
+    width:1000px;
+    margin:0 auto;
+    padding:0 16px;
+    text-align: center;
+}
+.content-wrapper h2{
+    text-align:center;
+    
+    padding:0 ;
+}
+.content-wrapper h2 span{
+    border-bottom:solid 10px red; 
+}
+.morebtn{
+    
+    margin:0 auto;
+    position: relative;
+    
+    padding:10px 50px;
+}
+.morebtn span{
+    color: black;
+    text-decoration:none;
+    
+    display: inline-block;
+}
+.morebtn::before{
+    position:absolute;
+    top:-2px;
+    left:0;
+    content:"";
+    border-top: solid 2px red; 
+    border-left: solid 2px red; 
+    width:20%;
+    height: 100%;
+}
+.morebtn:hover::before{
+    position:absolute;
+    top:-2px;
+    left:0;
+    content:"";
+    border-bottom: solid 2px red; 
+    border-top: solid 2px red; 
+    border-left: solid 2px red; 
+    width:50%;
+    height: 100%;
+    
+}
+.morebtn::after{
+    position:absolute;
+    bottom: -2px;
+    right:0;
+    content:"";
+    border-bottom: solid 2px red; 
+    border-right: solid 2px red; 
+    width:20%;
+    height: 100%;
+}
+.morebtn:hover::after{
+    position:absolute;
+    top:-2px;
+    right:0;
+    content:"";
+    border-top: solid 2px red; 
+    border-bottom: solid 2px red; 
+    border-right: solid 2px red; 
+    width:50%;
+    height: 100%;
+    
+}
+
+.location-wrapper{
+    background-image: url(/Users/takuya/Desktop/模写コーディング/test7/img/location.jpg);
+}
+.text{
+    display:flex;
+    flex-wrap: wrap;
+}
+.text p{
+    width:50%;
+
+}
+.a{
+    text-align: left;
+}
+
+footer{
+    text-align:center;
+}
