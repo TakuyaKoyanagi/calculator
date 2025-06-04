@@ -1,16 +1,153 @@
-body {
-    font-family: sans-serif;
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
+:root {
+    --bg: #181818;
+    --fg: #ffffff;
+    --accent: #4f46e5;
+    --gray: #666;
+    --done: #22c55e;
   }
   
-  li.done {
-    text-decoration: line-through;
-    color: gray;
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
   }
-  .edit-input {
-    width: 80%;
+  
+  .container {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    background: #222;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  input#todo-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #333;
+    color: var(--fg);
     font-size: 1rem;
-    padding: 4px;
   }
+  
+  input#todo-input:focus {
+    outline: 2px solid var(--accent);
+  }
+  
+  form button {
+    padding: 0.75rem 1rem;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  form button:hover {
+    background: #3730a3;
+  }
+  
+  #filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  #filters button {
+    background: #333;
+    border: none;
+    color: var(--fg);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #filters button.active,
+  #filters button:hover {
+    background: var(--accent);
+  }
+  
+  ul#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    background: #2a2a2a;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  li.done span {
+    text-decoration: line-through;
+    color: var(--gray);
+  }
+  
+  li:hover {
+    transform: scale(1.02);
+  }
+  
+  span {
+    flex: 1;
+    cursor: pointer;
+  }
+  
+  .edit-input {
+    flex: 1;
+    background: #333;
+    color: var(--fg);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+  }
+  
+  button {
+    margin-left: 0.5rem;
+    background: transparent;
+    color: #f87171;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  button:hover {
+    color: #f43f5e;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

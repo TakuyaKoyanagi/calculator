@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>ToDoアプリ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stylish ToDo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>ToDoリスト</h1>
-  <form id="todo-form">
-    <input type="text" id="todo-input" placeholder="やることを書く">
-    <button type="submit">追加</button>
-  </form>
-  <div id="filters">
-    <button data-filter="all">すべて</button>
-    <button data-filter="active">未完了</button>
-    <button data-filter="done">完了</button>
+  <div class="container">
+    <h1>📝 ToDo List</h1>
+    <form id="todo-form">
+      <input id="todo-input" placeholder="やることを入力..." required />
+      <button>追加</button>
+    </form>
+    <div id="filters">
+      <button data-filter="all">すべて</button>
+      <button data-filter="active">未完了</button>
+      <button data-filter="done">完了</button>
+    </div>
+    <ul id="todo-list"></ul>
   </div>
-  <ul id="todo-list"></ul>
   <script src="script.js"></script>
 </body>
 </html>
