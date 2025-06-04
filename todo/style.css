@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  li.done {
+    text-decoration: line-through;
+    color: gray;
+  }
+  .edit-input {
+    width: 80%;
+    font-size: 1rem;
+    padding: 4px;
+  }

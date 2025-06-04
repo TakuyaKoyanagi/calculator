@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDoアプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>ToDoリスト</h1>
+  <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="やることを書く">
+    <button type="submit">追加</button>
+  </form>
+  <div id="filters">
+    <button data-filter="all">すべて</button>
+    <button data-filter="active">未完了</button>
+    <button data-filter="done">完了</button>
+  </div>
+  <ul id="todo-list"></ul>
+  <script src="script.js"></script>
+</body>
+</html>
